@@ -253,19 +253,20 @@ std::string GetLayerK( float h )
     return layer; //Return the appropriate message back to GetLayer(int,float).
 }
 
+//Define a function to simultaneously test user input, and clear the buffer if it fails.
 bool cin_test()
 {
     using namespace std;
-    bool input_test;
-    if( cin.fail() || ( cin.peek() != '\n' ) )
+    bool input_test; //Declare a variable to store the pass/fail status of the test.
+    if( cin.fail() || ( cin.peek() != '\n' ) ) //Check if the user didn't put in a number, or put a non number character between numbers and pressing enter.
     {
-        cin.clear();
-        cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
-        input_test = true;
+        cin.clear(); //Clear the input failure flag.
+        cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' ); //Clear the buffer of the bad data.
+        input_test = true; //Set input_test to true in order to reflect that there was an error.
     }
     else
     {
-        input_test = false;
+        input_test = false; //If there was no error, set input_test to false.
     }
-    return input_test;
+    return input_test; //Return the result in order to use this for conditional checks.
 }
