@@ -32,7 +32,7 @@ int main()
     
     if( GetUnit( unit ) ); //Retrieve preferred unit of measure.
     {
-        cout << "Thank you for selecting a unit." << endl; //If successful, thank the user and continue.
+        cout << "Thank you for selecting the " << MILES << " unit." << endl; //If successful, thank the user and continue.
     }
     else
     {
@@ -157,20 +157,22 @@ bool GetHeight(float& height)
     std::exit( EXIT_FAILURE ); //It should be impossible to get here, but as a failsafe, terminate the program.
 }
 
-//Define function to find layer using chosen system
+//Define function to find layer using chosen system.
 std::string GetLayer( int u, float h )
 {
     using namespace values::unit;
-    std::string layer;
-    switch( u )
+    using namespace std;
+    assert( u == MILES || u == KILOMETERS ); //Asserts that the function call provided a valid unit option.
+    string layer; //Declare variable to hold the layer message.
+    switch( u ) //Test for which unit the user selectes.
     {
-        case MILES:      layer = GetLayerM(h);
-                         break;
-        case KILOMETERS: layer = GetLayerK(h);
-                         break;
-        default:         std::exit(EXIT_FAILURE);
+        case MILES:      layer = GetLayerM(h); //If user selected to use miles, run the miles lookup function.
+                         break; //Guard from running both functions, and exiting the program prematurely.
+        case KILOMETERS: layer = GetLayerK(h); //If user selected to use kilometers, run the kilometers lookup function.
+                         break; //Guard from exiting the program prematurely.
+        default:         exit(EXIT_FAILURE); //Should never be able to get here, but if some how the user does, exit the program.
     }
-    return layer;
+    return layer; //Return the layer of the atmosphere the height is in.
 }
 
 //Define function to find altitude mile layer
