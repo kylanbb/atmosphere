@@ -22,13 +22,13 @@ int main()
 
     atexit( onExit );
 
-    //Set output format to be xx.xx
+    //Set output format to be xx.xx.
     cout.setf( ios::fixed );
     cout.setf( ios::showpoint );
     cout.precision( 2 );
     
-    int unit; //Declare variable to store the users unit choice
-    float height; //Declare vairable to store the users height input
+    int unit; //Declare variable to store the users unit choice.
+    float height; //Declare vairable to store the users height input.
     
     if( GetUnit( unit ) ); //Retrieve preferred unit of measure.
     {
@@ -50,47 +50,47 @@ int main()
 
     cout << height << GetLayer( unit, height ) << endl; //Inform the user the atmospheric layer based on the unit type and height they selected.
     
-    exit( EXIT_SUCCESS ); //Exit the program
+    exit( EXIT_SUCCESS ); //Exit the program.
 }
 
-//Event handler for application exit
+//Event handler for application exit.
 void onExit()
 {
     using namespace std;
 
-    std::cout << "Exiting the application now." << std::endl;
+    cout << "Exiting the application now." << endl; //Print the message to user when the program closes.
 }
 
-//Declare function to choose unit of measure
+//Declare function to choose unit of measure.
 bool GetUnit(int& unit)
 {
-    //Allow user to choose unit of measure, max five attempts
+    //Allow user to choose unit of measure, max five attempts.
     for( int i = 0; i < 5; i++ ) 
     {
         bool isValid = true;
-        std::cout << messages::unit::REQUEST << std::endl; //Request unit of measure
-        std::cin >> unit; //Collect user's choice
+        std::cout << messages::unit::REQUEST << std::endl; //Request unit of measure.
+        std::cin >> unit; //Collect user's choice.
         
-        if( cin_test() ) //Test input failure
+        if( cin_test() ) //Tests whether the user input a number or not.
         {
-            isValid = false;
+            isValid = false; //If user did not put in a number, set isValid to false.
         }
-        else if( unit != values::unit::MILES && unit != values::unit::KILOMETERS )
+        else if( unit != values::unit::MILES && unit != values::unit::KILOMETERS ) //Test to see if the number corresponds to either unit of measurement.
         {
-            isValid = false;
+            isValid = false; //If user put in an invalid number, set isValid to false.
         }
-        else if( unit == values::unit::MILES || unit == values::unit::KILOMETERS )
+        else if( unit == values::unit::MILES || unit == values::unit::KILOMETERS ) //Double check that user did indeed put in a valid number.
         {
-            isValid = true;
+            isValid = true; //If the number corresponds to miles or kilometers, set isValid to true.
         }
         else
         {
-            std::exit( EXIT_FAILURE ); //Should never get here, but just in case have a back up
+            std::exit( EXIT_FAILURE ); //Should never get here, but just in case have a back up.
         }
 
-        if( isValid )
+        if( isValid ) //Check if user selected a valid unit of measure.
         {
-            return isValid;
+            return isValid; //If user did select a valid unit of measure, return true.
         }
         else
         {
