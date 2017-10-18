@@ -94,18 +94,18 @@ bool GetUnit(int& unit)
         }
         else
         {
-            if( i == 4 )
+            if( i == 4 ) //Check if the user is out of attempts.
             {
-                std::cout << messages::OUT_OF_TRIES << std::endl;
-                std::exit( EXIT_SUCCESS );
+                std::cout << messages::OUT_OF_TRIES << std::endl; //If the user is out of attempts, alert the user.
+                std::exit( EXIT_SUCCESS ); //Additionally, exit the program.
             }
             else
             {
-                std::cout << messages::unit::INVALID << std::endl;
+                std::cout << messages::unit::INVALID << std::endl; //If the user is not out of attempts, alert the user it was invalid and run the loop again.
             }
         }
     }
-    std::exit( EXIT_FAILURE );
+    std::exit( EXIT_FAILURE ); //Shouldn't be possible to get here, but just in case a failsafe.
 }
 
 //Declare function to retrieve altitude
