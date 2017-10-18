@@ -19,7 +19,6 @@
 int main()
 {
     using namespace std;
-
     atexit( onExit );
 
     //Set output format to be xx.xx.
@@ -30,17 +29,16 @@ int main()
     int unit; //Declare variable to store the users unit choice.
     float height; //Declare vairable to store the users height input.
     
-    if( GetUnit( unit ) ); //Retrieve preferred unit of measure.
+    if( GetUnit( unit ) ) //Retrieve preferred unit of measure.
     {
-        cout << "Thank you for selecting the " 
-             << MILES << " unit." << endl; //If successful, thank the user and continue.
+        cout << "Thank you for selecting the unit." << endl; //If successful, thank the user and continue.
     }
-    else
+    else 
     {
         exit( EXIT_FAILURE ); //If unsuccessful, exit the program.
     }
     
-    if( GetHeight( height ) ); //Retreive Altitude.
+    if( GetHeight( height ) ) //Retreive Altitude.
     {
         cout << "Thank you for choosing a valid height. Now calculating the atmospheric layer." 
              << endl; //If successful, thank the user and continue.
