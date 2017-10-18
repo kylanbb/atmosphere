@@ -67,7 +67,7 @@ bool GetUnit(int& unit)
     //Allow user to choose unit of measure, max five attempts.
     for( int i = 0; i < 5; i++ ) 
     {
-        bool isValid = true;
+        bool isValid; //Declare a variable to store whether the input is valid or not.
         std::cout << messages::unit::REQUEST << std::endl; //Request unit of measure.
         std::cin >> unit; //Collect user's choice.
         
@@ -108,53 +108,53 @@ bool GetUnit(int& unit)
     std::exit( EXIT_FAILURE ); //Shouldn't be possible to get here, but just in case a failsafe.
 }
 
-//Declare function to retrieve altitude
+//Declare function to retrieve altitude.
 bool GetHeight(float& height)
 {
     using namespace messages;
-    //Allow user to input height, max five attempts
+    //Allow user to input height, max five attempts.
     for( int i = 0; i < 5; i++ )
     {
-        bool isValid;
-        std::cout << height::REQUEST << std::endl; //Request height
-        std::cin >> height; //Collects height
+        bool isValid; //Declare a variable to store whether the input is valid or not.
+        std::cout << height::REQUEST << std::endl; //Request height.
+        std::cin >> height; //Retrieves height.
 
-        if( cin_test() )
+        if( cin_test() ) //Tests that the user input a number.
         {
-            isValid = false;
+            isValid = false; //If user did not input a number, set isValid to false.
         }
-
-        else if( height < 0 )
+        else if( height < 0 ) //Verifies that the user input zero or a positive number.
         {
-            isValid = false;
+            isValid = false; //If user did not, set isValid to false.
         }
-        else if( height >= 0 )
+        else if( height >= 0 ) //Double checks that the user did indeed input zero or a positive number.
         {
-            isValid = true;
+            isValid = true; //If so, input is valid, set isValid to true.
         }
         else
         {
-            std::exit( EXIT_FAILURE ); //Should never get here, but just in case have a back up
+            std::exit( EXIT_FAILURE ); //Should never get here, but just in case have a back up.
         }
-        if( isValid )
+
+        if( isValid ) //Check if user input a valid height.
         {
-            return isValid; //User gave appropriate option, move onto the rest of the program
+            return isValid; //User gave appropriate option, move onto the rest of the program.
         }
         else
         {
-            if( i == 4 )
+            if( i == 4 ) //Check if the user has any more attempts.
             {
-                std::cout << OUT_OF_TRIES << std::endl;
+                std::cout << OUT_OF_TRIES << std::endl; //If not, inform the user they are out.
                 std::exit( EXIT_SUCCESS ); //User ran out of tries, terminate program
             }
             else
             {
-                std::cout << height::INVALID << std::endl;
+                std::cout << height::INVALID << std::endl; //If user has more tries, inform them they put in an invalid height, and begin loop again.
             }
         }
 
     }
-    std::exit( EXIT_FAILURE );
+    std::exit( EXIT_FAILURE ); //It should be impossible to get here, but as a failsafe, terminate the program.
 }
 
 //Define function to find layer using chosen system
