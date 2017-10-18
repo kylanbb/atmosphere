@@ -32,7 +32,8 @@ int main()
     
     if( GetUnit( unit ) ); //Retrieve preferred unit of measure.
     {
-        cout << "Thank you for selecting the " << MILES << " unit." << endl; //If successful, thank the user and continue.
+        cout << "Thank you for selecting the " 
+             << MILES << " unit." << endl; //If successful, thank the user and continue.
     }
     else
     {
@@ -41,14 +42,16 @@ int main()
     
     if( GetHeight( height ) ); //Retreive Altitude.
     {
-        cout << "Thank you for choosing a valid height. Now calculating the atmospheric layer." << endl; //If successful, thank the user and continue.
+        cout << "Thank you for choosing a valid height. Now calculating the atmospheric layer." 
+             << endl; //If successful, thank the user and continue.
     }
     else
     {
         exit( EXIT_FAILURE ); //If unsuccessful, exit the program.
     }
 
-    cout << height << GetLayer( unit, height ) << endl; //Inform the user the atmospheric layer based on the unit type and height they selected.
+    //Inform the user the atmospheric layer based on the unit type and height they selected.
+    cout << height << GetLayer( unit, height ) << endl; 
     
     exit( EXIT_SUCCESS ); //Exit the program.
 }
@@ -75,11 +78,15 @@ bool GetUnit(int& unit)
         {
             isValid = false; //If user did not put in a number, set isValid to false.
         }
-        else if( unit != values::unit::MILES && unit != values::unit::KILOMETERS ) //Test to see if the number corresponds to either unit of measurement.
+
+        //Test to see if the number corresponds to either unit of measurement.
+        else if( unit != values::unit::MILES && unit != values::unit::KILOMETERS ) 
         {
             isValid = false; //If user put in an invalid number, set isValid to false.
         }
-        else if( unit == values::unit::MILES || unit == values::unit::KILOMETERS ) //Double check that user did indeed put in a valid number.
+
+        //Double check that user did indeed put in a valid number.
+        else if( unit == values::unit::MILES || unit == values::unit::KILOMETERS ) 
         {
             isValid = true; //If the number corresponds to miles or kilometers, set isValid to true.
         }
@@ -96,12 +103,14 @@ bool GetUnit(int& unit)
         {
             if( i == 4 ) //Check if the user is out of attempts.
             {
-                std::cout << messages::OUT_OF_TRIES << std::endl; //If the user is out of attempts, alert the user.
+                //If the user is out of attempts, alert the user.
+                std::cout << messages::OUT_OF_TRIES << std::endl; \
                 std::exit( EXIT_SUCCESS ); //Additionally, exit the program.
             }
             else
             {
-                std::cout << messages::unit::INVALID << std::endl; //If the user is not out of attempts, alert the user it was invalid and run the loop again.
+                //If the user is not out of attempts, alert the user it was invalid and run the loop again.
+                std::cout << messages::unit::INVALID << std::endl; 
             }
         }
     }
@@ -149,12 +158,15 @@ bool GetHeight(float& height)
             }
             else
             {
-                std::cout << height::INVALID << std::endl; //If user has more tries, inform them they put in an invalid height, and begin loop again.
+                //If user has more tries, inform them they put in an invalid height, and begin loop again.
+                std::cout << height::INVALID << std::endl; 
             }
         }
 
     }
-    std::exit( EXIT_FAILURE ); //It should be impossible to get here, but as a failsafe, terminate the program.
+
+    //It should be impossible to get here, but as a failsafe, terminate the program.
+    std::exit( EXIT_FAILURE ); 
 }
 
 //Define function to find layer using chosen system.
@@ -258,7 +270,9 @@ bool cin_test()
 {
     using namespace std;
     bool input_test; //Declare a variable to store the pass/fail status of the test.
-    if( cin.fail() || ( cin.peek() != '\n' ) ) //Check if the user didn't put in a number, or put a non number character between numbers and pressing enter.
+
+    //Check if the user didn't put in a number, or put a non number character between numbers and pressing enter.
+    if( cin.fail() || ( cin.peek() != '\n' ) ) 
     {
         cin.clear(); //Clear the input failure flag.
         cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' ); //Clear the buffer of the bad data.
