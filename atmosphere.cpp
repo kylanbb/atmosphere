@@ -145,7 +145,7 @@ bool GetHeight(float& height)
             if( i == 4 ) //Check if the user has any more attempts.
             {
                 std::cout << OUT_OF_TRIES << std::endl; //If not, inform the user they are out.
-                std::exit( EXIT_SUCCESS ); //User ran out of tries, terminate program
+                std::exit( EXIT_SUCCESS ); //User ran out of tries, terminate program.
             }
             else
             {
