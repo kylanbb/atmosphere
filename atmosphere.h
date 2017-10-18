@@ -2,9 +2,9 @@
 #ifndef ATMOSPHERE_H
 #define ATMOSPHERE_H
 #include <string>
-//Declare all constants lines 5 - 92
+//Declare all constants
 
-//Declare all message constants lines 7 - 54
+//Declare all message constants
 namespace messages 
 {
     //Declare message for when the user runs out of attempts for the user input functions.
@@ -24,7 +24,7 @@ namespace messages
         const std::string INVALID = "That was an invalid entry. Please try again using only numbers.";
     }
 
-    //Declare all messages to inform the user which specific layer the height they provided is in lines 27 - 53
+    //Declare all messages to inform the user which specific layer the height they provided is in
     namespace layers
     {
         //Declare the layer messages for heights in miles.
@@ -53,7 +53,7 @@ namespace messages
     }
 }
 
-//Declare all other non-message constants lines 56 - 92
+//Declare all other non-message constants
 namespace values
 {
     //Unit selection constants
@@ -63,7 +63,7 @@ namespace values
         const int KILOMETERS = 1;
     }
 
-    //Atmospheric height constants lines 66 - 91
+    //Atmospheric height constants
     namespace layers
     {
         //Regardless of unit, zero is on the surface

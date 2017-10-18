@@ -1,6 +1,6 @@
 /*
  * Author: Kylan Byrd
- * Date: V-0.2: 10/4/2017
+ * Date: V-1.0: 10/18/2017
  * Compile with g++ -std=c++11 -Wall -o atmosphere_functions atmosphere_functions.cpp
  *
  * Find the level of the atmosphere for a given altitude. Accepts miles or kilometers.
@@ -23,25 +23,41 @@ int main()
     atexit( onExit );
 
     //Set output format to be xx.xx
-    std::cout.setf( ios::fixed );
-    std::cout.setf( ios::showpoint );
-    std::cout.precision( 2 );
+    cout.setf( ios::fixed );
+    cout.setf( ios::showpoint );
+    cout.precision( 2 );
     
-    int unit;
-    float height;
+    int unit; //Declare variable to store the users unit choice
+    float height; //Declare vairable to store the users height input
     
-    if( GetUnit( unit ) ); //Retrieve preferred unit of measure 
+    if( GetUnit( unit ) ); //Retrieve preferred unit of measure.
+    {
+        cout << "Thank you for selecting a unit." << endl; //If successful, thank the user and continue.
+    }
+    else
+    {
+        exit( EXIT_FAILURE ); //If unsuccessful, exit the program.
+    }
     
-    if( GetHeight( height ) ); //Retreive Altitude
-    
-    std::cout << height << GetLayer( unit, height ) << std::endl;
+    if( GetHeight( height ) ); //Retreive Altitude.
+    {
+        cout << "Thank you for choosing a valid height. Now calculating the atmospheric layer." << endl; //If successful, thank the user and continue.
+    }
+    else
+    {
+        exit( EXIT_FAILURE ); //If unsuccessful, exit the program.
+    }
 
-    exit( EXIT_SUCCESS );
+    cout << height << GetLayer( unit, height ) << endl; //Inform the user the atmospheric layer based on the unit type and height they selected.
+    
+    exit( EXIT_SUCCESS ); //Exit the program
 }
 
 //Event handler for application exit
 void onExit()
 {
+    using namespace std;
+
     std::cout << "Exiting the application now." << std::endl;
 }
 
