@@ -209,9 +209,9 @@ std::string GetLayerM( float h )
     } 
     else
     {
-        exit( EXIT_FAILURE ); //Should never get here, but just in case have a back up
+        exit( EXIT_FAILURE ); //Should never get here, but just in case have a back up.
     }
-    return layer; //Return the appropriate message back to GetLayer().
+    return layer; //Return the appropriate message back to GetLayer(int,float).
 }
 
 //Define function to find altitude kilometer layer
@@ -222,35 +222,35 @@ std::string GetLayerK( float h )
     {
         layer = messages::layers::kilometers::SURFACE; //If so, it prints the appropriate message.  
     }
-    else if( h <= values::layers::kilometers::TROPOSPHERE ) //Checks if the height is at the surface level.  
+    else if( h <= values::layers::kilometers::TROPOSPHERE ) //Checks if the height is at the troposhere level.  
     {
         layer = messages::layers::kilometers::TROPOSPHERE; //If so, it prints the appropriate message.  
     }
-    else if( h <= values::layers::kilometers::STRATOSPHERE ) //Checks if the height is at the surface level.  
+    else if( h <= values::layers::kilometers::STRATOSPHERE ) //Checks if the height is at the stratosphere level.  
     {
         layer = messages::layers::kilometers::STRATOSPHERE; //If so, it prints the appropriate message.  
     }
-    else if( h <= values::layers::kilometers::MESOSPHERE ) //Checks if the height is at the surface level.  
+    else if( h <= values::layers::kilometers::MESOSPHERE ) //Checks if the height is at the mesosphere level.  
     {
         layer = messages::layers::kilometers::MESOSPHERE; //If so, it prints the appropriate message.  
     }
-    else if( h <= values::layers::kilometers::THERMOSPHERE ) //Checks if the height is at the surface level.  
+    else if( h <= values::layers::kilometers::THERMOSPHERE ) //Checks if the height is at the thermosphere level.  
     {
         layer = messages::layers::kilometers::THERMOSPHERE; //If so, it prints the appropriate message.  
     }
-    else if( h <= values::layers::kilometers::EXOSPEHRE ) //Checks if the height is at the surface level.  
+    else if( h <= values::layers::kilometers::EXOSPEHRE ) //Checks if the height is at the exosphere level.  
     {
         layer = messages::layers::kilometers::EXOSPHERE; //If so, it prints the appropriate message.  
     }
-    else if( h > values::layers::kilometers::EXOSPEHRE ) //Checks if the height is at the surface level.  
+    else if( h > values::layers::kilometers::EXOSPEHRE ) //Checks if the height is above the exosphere level.  
     {
         layer = messages::layers::kilometers::OUTERSPACE;//If so, it prints the appropriate message.  
     }
     else
     {
-        exit( EXIT_FAILURE ); //Should never get here, but just in case have a back up
+        exit( EXIT_FAILURE ); //Should never get here, but just in case have a back up.
     }
-    return layer;
+    return layer; //Return the appropriate message back to GetLayer(int,float).
 }
 
 bool cin_test()
